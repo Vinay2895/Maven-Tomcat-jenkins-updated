@@ -40,10 +40,6 @@ pipeline {
         }
  stage('deploy-to-tomcat') {
             steps {
-                   bat echo Stopping Tomcat
-                    bat net stop Tomcat9
-                   bat copy target\\yourapp.war C:\\apache-tomcat-9.0.85\\webapps\\yourapp.war
-                   bat echo Starting Tomcat
-                   bat net start Tomcat9
+                   deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'Tomcat', path: '', url: 'http://localhost:8080')], contextPath: null, war: '**/*.war'
     }
 }
