@@ -1,4 +1,4 @@
-plo// Building WAR file
+// Building WAR file
 pipeline {
     agent any 
 
