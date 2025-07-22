@@ -38,14 +38,19 @@ pipeline {
                 bat 'mvn install'
             }
         }
+stage('deploy') {
+            steps {
+                bat 'mvn deploy'
+            }
+}
  stage('deploy-to-tomcat') {
             steps {
-                   deploy (adapters: [
+                   deploy adapters: [
                    tomcat9 (
                            alternativeDeploymentContext: '', credentialsId: 'Tomcat', path: '', url: 'http://localhost:8080'
 )]
-, contextPath: 'myapp', war: '**/*.war'
-    )}
+, contextPath: null, war: '**/*.war'
+    }
 }
 }
 }
