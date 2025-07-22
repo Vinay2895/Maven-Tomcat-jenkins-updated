@@ -40,10 +40,10 @@ pipeline {
         }
  stage('deploy-to-tomcat') {
             steps {
-                    echo Stopping Tomcat
-                    net stop Tomcat9
-                    copy target\\yourapp.war J:\Zevops_kt\Tomcat-9.0.107\webapps\\maven-war.war
-                    echo Starting Tomcat
-                    net start Tomcat9
+                   bat echo Stopping Tomcat
+                    bat net stop Tomcat9
+                   bat copy target\\yourapp.war J:\\Zevops_kt\Tomcat-9.0.107\webapps\\maven-war.war
+                   bat echo Starting Tomcat
+                   bat net start Tomcat9
     }
 }
